@@ -1,0 +1,143 @@
+public class Simpson {
+    double a, b;
+    //double n;
+    double num;
+    double gorny, dolny;
+    double h, dokladnosc;
+    Simpson(double n, double a, double b, double num) {
+        this.dokladnosc = n;
+        this.gorny = a;
+        this.dolny = b;
+        this.num = num;
+        this.h = ((gorny + 2/dokladnosc * (gorny - dolny)) - (gorny + 1/dokladnosc * (gorny - dolny)))/2;
+    }
+
+    public double f(double x){
+        return(Math.sqrt(Math.pow(x,2) + 4 * x + 5));
+    }
+
+    public double wielomiany2(double x, double stopien) {
+
+        if(stopien == 0)
+            return (1);
+        if(stopien == 1)
+            return (x);
+        if(stopien == 2)
+            return (0.5 * (3 * x * x - 1));
+        if(stopien == 3)
+            return ((0.5) * (5 * x * x * x - 3 * x));
+        else if(stopien == 4)
+            return (0.125) * (35 * Math.pow(x,4) - 30 * Math.pow(x,2) + 3);
+        else if(stopien == 5)
+            return (0.125) * (63 * Math.pow(x,5) - 70 * Math.pow(x,3) + 15 * x);
+        else if(stopien == 6)
+            return (0.0625) * (231 * Math.pow(x,6) - 315 * Math.pow(x,4) + 105 * Math.pow(x,2) - 5);
+        else if(stopien == 7)
+            return (0.0625) * (429 * Math.pow(x,7) - 693 * Math.pow(x,5) + 315 * Math.pow(x,3) - 35 * x);
+        else if(stopien == 8)
+            return  (0.0078125) * (6435 * Math.pow(x,8) - 12012 * Math.pow(x,6) + 6930 * Math.pow(x,4) - 1260 * Math.pow(x,2) + 35);
+        else if(stopien == 9)
+            return  (0.0078125) * (12155 * Math.pow(x,9) - 25740 * Math.pow(x,7) + 18018 * Math.pow(x,5) - 4620 * Math.pow(x,3) + 315 * x);
+        else if(stopien == 10)
+            return  (0.00390625) * (46189 * Math.pow(x,10) - 109395 * Math.pow(x,8) + 90090 * Math.pow(x,6) - 30030 * Math.pow(x,4) + 3465 * Math.pow(x,2) - 63);
+
+        return 0;
+    }
+    public double wielomiany(double x, double stopien) {
+
+        if(stopien == 0)
+            return (1 * f(x));
+        if(stopien == 1)
+            return (x* f(x));
+        if(stopien == 2)
+            return ((0.5 * (3 * x * x - 1)) * f(x));
+        if(stopien == 3)
+            return (((0.5) * (5 * x * x * x - 3 * x)) * f(x));
+        else if(stopien == 4)
+            return (0.125) * (35 * Math.pow(x,4) - 30 * Math.pow(x,2) + 3) * f(x);
+        else if(stopien == 5)
+            return (0.125) * (63 * Math.pow(x,5) - 70 * Math.pow(x,3) + 15 * x) * f(x);
+        else if(stopien == 6)
+            return (0.0625) * (231 * Math.pow(x,6) - 315 * Math.pow(x,4) + 105 * Math.pow(x,2) - 5) * f(x);
+        else if(stopien == 7)
+            return (0.0625) * (429 * Math.pow(x,7) - 693 * Math.pow(x,5) + 315 * Math.pow(x,3) - 35 * x) * f(x);
+        else if(stopien == 8)
+            return  (0.0078125) * (6435 * Math.pow(x,8) - 12012 * Math.pow(x,6) + 6930 * Math.pow(x,4) - 1260 * Math.pow(x,2) + 35) * f(x);
+        else if(stopien == 9)
+            return  (0.0078125) * (12155 * Math.pow(x,9) - 25740 * Math.pow(x,7) + 18018 * Math.pow(x,5) - 4620 * Math.pow(x,3) + 315 * x) * f(x);
+        else if(stopien == 10)
+            return  (0.00390625) * (46189 * Math.pow(x,10) - 109395 * Math.pow(x,8) + 90090 * Math.pow(x,6) - 30030 * Math.pow(x,4) + 3465 * Math.pow(x,2) - 63) * f(x);
+
+        return 0;
+    }
+    public double wielomiany_lambda(double x, double stopien) {
+        if(stopien == 0)
+            return Math.pow(1,2);
+        if(stopien == 1)
+            return Math.pow(x,2);
+        if(stopien == 2)
+            return Math.pow(((0.5) * (3 * x * x - 1)),2);
+        if(stopien == 3)
+            return Math.pow(((0.5) * (5 * x * x * x - 3 * x)),2);
+        else if(stopien == 4)
+            return Math.pow((0.125) * (35 * Math.pow(x,4) - 30 * Math.pow(x,2) + 3),2);
+        else if(stopien == 5)
+            return Math.pow((0.125) * (63 * Math.pow(x,5) - 70 * Math.pow(x,3) + 15 * x),2);
+        else if(stopien == 6)
+            return Math.pow((0.0625) * (231 * Math.pow(x,6) - 315 * Math.pow(x,4) + 105 * Math.pow(x,2) - 5) ,2);
+        else if(stopien == 7)
+            return Math.pow((0.0625) * (429 * Math.pow(x,7) - 693 * Math.pow(x,5) + 315 * Math.pow(x,3) - 35 * x),2);
+        else if(stopien == 8)
+            return Math.pow((0.0078125) * (6435 * Math.pow(x,8) - 12012 * Math.pow(x,6) + 6930 * Math.pow(x,4) - 1260 * Math.pow(x,2) + 35),2);
+        else if(stopien == 9)
+            return Math.pow((0.0078125) * (12155 * Math.pow(x,9) - 25740 * Math.pow(x,7) + 18018 * Math.pow(x,5) - 4620 * Math.pow(x,3) + 315 * x),2);
+        else if(stopien == 10)
+            return Math.pow((0.00390625) * (46189 * Math.pow(x,10) - 109395 * Math.pow(x,8) + 90090 * Math.pow(x,6) - 30030 * Math.pow(x,4) + 3465 * Math.pow(x,2) - 63),2);
+
+        return 0;
+    }
+
+    public double simpson(){
+        double calka = 0, calka_lambda = 0, xi = 0,ti = 0, tisum = 0, xisum = 0;
+
+        for (int i = 0; i < dokladnosc; i++) {
+            xi = dolny + (i/dokladnosc) * (gorny - dolny);
+            ti = ((dolny + ((i+1)/dokladnosc) * (gorny - dolny)) + (dolny + (i/dokladnosc) * (gorny - dolny)))/2;
+            if (i == 0) {
+                tisum += wielomiany(ti, num);
+            }
+            else {
+                tisum += wielomiany(ti, num);
+                xisum += wielomiany(xi, num);
+            }
+        }
+
+        calka += 4*tisum;
+        calka += 2*xisum;
+        calka += (wielomiany(dolny, num) + wielomiany(gorny, num));
+        calka *= h/3;
+
+        tisum = 0;
+        xisum = 0;
+
+        for (int i = 0; i < dokladnosc; i++) {
+            xi = dolny + (i/dokladnosc) * (gorny - dolny);
+            ti = ((dolny + ((i+1)/dokladnosc) * (gorny - dolny)) + (dolny + (i/dokladnosc) * (gorny - dolny)))/2;
+            if (i == 0) {
+                tisum += wielomiany_lambda(ti, num);
+            }
+            else {
+                tisum += wielomiany_lambda(ti, num);
+                xisum += wielomiany_lambda(xi, num);
+            }
+        }
+
+        calka_lambda += 4*tisum;
+        calka_lambda += 2*xisum;
+        calka_lambda += (wielomiany_lambda(dolny, num) + wielomiany_lambda(gorny, num));
+        calka_lambda *= h/3;
+
+        calka *= 1/calka_lambda;
+        return calka;
+    }
+}
